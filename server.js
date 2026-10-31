@@ -2,9 +2,8 @@ import express from "express";
 import OpenAI from "openai"
 import dotenv from "dotenv"
 import { checkEnvironment } from "./utils.js"
-import messages from "./initialMessagges.js"
 import cors from "cors";
-import pool from './config/database.js';
+// import pool from './config/database.js';
 
 // -- init env --
 dotenv.config();
@@ -27,16 +26,23 @@ const openai = new OpenAI({
     baseURL: process.env.AI_URL,
 });
 
+process.on('SIGINT', ()=> {
+  console.log('Starting graceful shutdown');
+  process.exit(1);
+})
+
+
 // -- Routes --
 app.get("/", (req, res) => {
     console.log("get/translate")
 
-  res.send(messages);
+  // res.send(messages);
 });
 
+//--- CHECKS ---
 app.get("/ping", (req, res) => {
   console.log("get/ping")
-  res.send("pong");
+  res.send("pong fuch");
 });
 
 app.get('/health', async (req, res) => {
@@ -56,31 +62,9 @@ app.get('/health', async (req, res) => {
     })
   }
 })
+//--- *** ---
 
-app.post("/translate", async (req, res) => {
-    console.log("POST/translate")
-    const { input, language } = req.body;
 
-    if(!input || !language){
-      return res.status(400).json({error: "Request empty"});
-    }
-
-    messages.push({
-        role: "user",
-        content: `-Text input to translate: ${input}.
-                 -Transalte to language: ${language}.`
-    });
-
-    console.log(messages);
-
-    const response = await openai.responses.create({
-        model: process.env.AI_MODEL,
-        input: messages,
-    })
-
-    console.log(response)
-    return res.status(200).json(response.output_text);
-});
 
 
 

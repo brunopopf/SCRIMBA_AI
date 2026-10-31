@@ -8,7 +8,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "prom": "node promises.js"
+    "prom": "node promises.js",
+    "api": "node ./api/main.js"
   },
   "keywords": [],
   "author": "",
