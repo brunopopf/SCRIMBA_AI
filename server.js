@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import { checkEnvironment } from "./utils.js"
 import messages from "./initialMessagges.js"
 import cors from "cors";
+import pool from './config/database.js';
 
 // -- init env --
 dotenv.config();
@@ -34,8 +35,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/ping", (req, res) => {
-    console.log("get/ping")
-
+  console.log("get/ping")
   res.send("pong");
 });
 
