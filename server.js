@@ -33,6 +33,12 @@ app.get("/", (req, res) => {
   res.send(messages);
 });
 
+app.get("/ping", (req, res) => {
+    console.log("get/ping")
+
+  res.send("pong");
+});
+
 app.post("/translate", async (req, res) => {
     console.log("POST/translate")
     const { input, language } = req.body;
