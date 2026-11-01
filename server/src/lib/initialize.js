@@ -1,9 +1,11 @@
 import express from 'express';
 import { setupHealthcheckRoutes } from './routes/index.js';
-import { setupConfig } from './config.js';
+import { setupConfig } from './config/index.js';
+import dotenv from "dotenv"
 
 export const initialize = () => {
     console.log("initalizing server..")
+    dotenv.config();
     
     const app = express();
 

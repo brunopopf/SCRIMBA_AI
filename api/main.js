@@ -3,7 +3,6 @@ import { initialize } from '../server/src/index.js'
 
 ( 
     async () => {
-        console.log("hola")
         /*
         await migrate();
         await associateModels();
@@ -15,8 +14,5 @@ import { initialize } from '../server/src/index.js'
       
         */
         const app = initialize();
-        console.log(app)
-
-
     }
 )();
