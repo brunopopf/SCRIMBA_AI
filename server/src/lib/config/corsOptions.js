@@ -29,12 +29,9 @@ const productionCorsOptions = {
 
 export const getCorsOptions = () => {
     const isLocal = process.env.ENV === 'local';
-    console.log("-----")
-    console.log(isLocal)
     if (isLocal) {
         return localCorsOptions;
     }
-
     return productionCorsOptions;
 }
 
