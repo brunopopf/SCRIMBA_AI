@@ -23,8 +23,9 @@ export const getPool = () => {
 
 export const assertDatabaseConnection = async () => {
     const pool = getPool();
+    let client;
     try {
-        const client = await pool.connect();
+        client = await pool.connect();
         await client.query('SELECT 1');
         console.log('Database connection verified successfully.');
     } catch (error) {
