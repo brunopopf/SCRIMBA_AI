@@ -18,7 +18,7 @@ export const initialize = () => {
     // setupRequestMiddlewares(app);
     // setupLoggingMiddlewares(app);
    
-    const server = app.listen(PORT, HOST, () => {
+    const server = app.listen(PORT, () => {
         console.log(`
             ------------------------------------------------------
                     Server initialization complete
