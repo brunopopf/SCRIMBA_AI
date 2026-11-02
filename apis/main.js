@@ -1,5 +1,6 @@
 // export * from './initialize';
 import { initialize } from '../apps/server/src/index.js'
+import { initDatabase } from '../libs/data/database/src/index.js'
 
 ( 
     async () => {
@@ -14,5 +15,6 @@ import { initialize } from '../apps/server/src/index.js'
       
         */
         const app = initialize();
+        await initDatabase();
     }
 )();

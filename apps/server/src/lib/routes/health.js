@@ -1,5 +1,5 @@
 
-import { getPool, connectDB } from '../../../../../libs/data/database/src/inedx.js';
+import { getPool, connectDB } from '../../../../../libs/data/database/src/index.js';
 
 export const health =  async (req, res) => {
     try {
