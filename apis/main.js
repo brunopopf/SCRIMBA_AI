@@ -1,5 +1,5 @@
 // export * from './initialize';
-import { initialize } from '../server/src/index.js'
+import { initialize } from '../apps/server/src/index.js'
 
 ( 
     async () => {
