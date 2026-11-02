@@ -28,7 +28,7 @@ const openai = new OpenAI({
 
 process.on('SIGINT', ()=> {
   console.log('Starting graceful shutdown');
-  process.exit(1);
+  process.exit(0);
 })
 
 
@@ -40,10 +40,10 @@ app.get("/", (req, res) => {
 });
 
 //--- CHECKS ---
-app.get("/ping", (req, res) => {
-  console.log("get/ping")
-  res.send("pong fuch");
-});
+// app.get("/ping", (req, res) => {
+//   console.log("get/ping")
+//   res.send("pong fuch");
+// });
 
 app.get('/health', async (req, res) => {
   try {

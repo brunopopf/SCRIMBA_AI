@@ -1,6 +1,7 @@
 import express from 'express';
 import { setupHealthcheckRoutes } from './routes/index.js';
 import { setupConfig } from './config/index.js';
+import { gracefulShutdown } from './gracefulShutdown.js'
 import dotenv from "dotenv"
 
 export const initialize = () => {
@@ -17,7 +18,7 @@ export const initialize = () => {
     // setupRequestMiddlewares(app);
     // setupLoggingMiddlewares(app);
    
-    app.listen(PORT, HOST, () => {
+    const server = app.listen(PORT, HOST, () => {
         console.log(`
             ------------------------------------------------------
                     Server initialization complete
@@ -29,6 +30,10 @@ export const initialize = () => {
                 `
         );
     });
+
     // initializeAuth(app);
+    process.on('SIGTERM', () => {
+        gracefulShutdown(server)
+    });
     return app;
   };
