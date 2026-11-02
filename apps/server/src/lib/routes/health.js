@@ -1,8 +1,11 @@
 
-import { getPool } from '../../../../../libs/data/database/src/inedx.js';
+import { getPool, connectDB } from '../../../../../libs/data/database/src/inedx.js';
 
 export const health =  async (req, res) => {
     try {
+      //db test
+      await connectDB();
+      
       const pool = getPool();
       await pool.query('SELECT 1');
       res.json({
