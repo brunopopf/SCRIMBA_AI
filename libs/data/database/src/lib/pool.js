@@ -21,23 +21,22 @@ export const getPool = () => {
     return poolInstance;
 };
 
-//Fail-Fast
-export const connectDB = async () => {
+export const assertDatabaseConnection = async () => {
     const pool = getPool();
     try {
         const client = await pool.connect();
-        await client.query('SELECT 1'); // Prueba rápida de salud
-        client.release();
+        await client.query('SELECT 1');
         console.log('Database connection verified successfully.');
     } catch (error) {
-        console.error('No se pudo conectar a la base de datos:', error);
+        console.error('Database conection failed:', error);
         throw error;
+    }finally{
+        if(client){
+            client.release();
+        }
     }
 };
 
-/**
- * Helper genérico para ejecutar consultas simples de forma limpia
- */
 export const query = async (text, params) => {
     const pool = getPool();
     return pool.query(text, params);

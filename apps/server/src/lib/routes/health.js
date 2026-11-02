@@ -1,13 +1,10 @@
 
-import { getPool, connectDB } from '../../../../../libs/data/database/src/index.js';
+import { assertDatabaseConnection } from '../../../../../libs/data/database/src/index.js';
 
 export const health =  async (req, res) => {
     try {
-      //db test
-      await connectDB();
-      
-      const pool = getPool();
-      await pool.query('SELECT 1');
+      await assertDatabaseConnection();
+
       res.json({
         status: 'ok',
         db: 'connected',

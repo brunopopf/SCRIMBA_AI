@@ -15,6 +15,6 @@ import { initDatabase } from '../libs/data/database/src/index.js'
       
         */
         const app = initialize();
-        await initDatabase();
+        // await initDatabase();
     }
 )();
