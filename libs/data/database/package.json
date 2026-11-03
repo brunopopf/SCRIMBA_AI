@@ -1,9 +1,19 @@
 {
-    "name": "database",
-    "version": "1.0.0",
-    "type": "module",
-    "main": "src/index.js",
-    "dependencies": {
-      "pg": "^8.11.3"
-    }
+  "name": "database",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "db:migrate": "node-pg-migrate --envPath ../../../.env --migrations-dir migrations up",
+    "db:rollback": "node-pg-migrate --envPath ../../../.env --migrations-dir migrations down",
+    "db:create": "node-pg-migrate --envPath ../../../.env --migrations-dir migrations create"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.5",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^11.1.0",
+    "node-pg-migrate": "^9.0.0"
   }
+}

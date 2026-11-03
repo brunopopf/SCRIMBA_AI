@@ -1,4 +1,5 @@
 import pg from 'pg';
+import { getDatabaseUrl } from './getDatabaseUrl.js';
 
 const { Pool } = pg;
 
@@ -6,8 +7,9 @@ let poolInstance = null;
 
 export const getPool = () => {
     if (!poolInstance) {
+        const connectionString = getDatabaseUrl();
         poolInstance = new Pool({
-            connectionString: process.env.DATABASE_URL,
+            connectionString,
             ssl: process.env.NODE_ENV === 'production' 
                 ? { rejectUnauthorized: false } 
                 : false,

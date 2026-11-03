@@ -9,7 +9,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "prom": "node promises.js",
-    "api": "node --watch apps/apis/Translate/main.js"
+    "api": "node --watch apps/apis/Translate/main.js",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f",
+    "db:migrate": "pnpm --filter database db:migrate",
+    "db:rollback":  "pnpm --filter database db:rollback",
+    "dev:setup": "pnpm db:up && sleep 3 && pnpm db:migrate"
   },
   "keywords": [],
   "author": "",
