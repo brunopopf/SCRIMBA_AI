@@ -1,5 +1,5 @@
 
-import { assertDatabaseConnection } from '../../../../../libs/data/database/src/index.js';
+import { assertDatabaseConnection } from 'database';
 
 export const health =  async (req, res) => {
     try {

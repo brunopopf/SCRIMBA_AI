@@ -12,8 +12,8 @@ const localCorsOptions = {
 const productionCorsOptions = {
     origin: (origin, callback) => {
         const allowedOrigins = [
-            'https://tu-sitio-web-en-produccion.com',//TODO
-            'https://www.tu-sitio-web-en-produccion.com'//TODO
+            'https://tu-sitio-web-en-produccion.com',//TODO:
+            'https://www.tu-sitio-web-en-produccion.com'//TODO:
         ];
 
         if (!origin || allowedOrigins.includes(origin)) {
@@ -28,10 +28,12 @@ const productionCorsOptions = {
 
 
 export const getCorsOptions = () => {
-    const isLocal = process.env.ENV === 'local';
-    if (isLocal) {
-        return localCorsOptions;
+    const isProduction = process.env.NODE_ENV === 'production';
+    
+    if (isProduction) {
+        return productionCorsOptions;
     }
-    return productionCorsOptions;
+    
+    return localCorsOptions;
 }
 

@@ -1,0 +1,8 @@
+{
+    "name": "translate-api",
+    "type": "module", 
+    "dependencies": {
+        "database": "workspace:^",
+        "server": "workspace:^"
+    }
+}

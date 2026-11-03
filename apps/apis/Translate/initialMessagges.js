@@ -1,4 +1,4 @@
-export default [
+export const messagges = [
     { role: "system", content: `You are a translator app. 
       
       
